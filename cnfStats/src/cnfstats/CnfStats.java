@@ -7,6 +7,9 @@ package cnfstats;
 
 import cnfstats.Classes.DIMACSReader;
 import cnfstats.Classes.DIMACSStatisticsBuilder;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -38,9 +41,14 @@ public class CnfStats {
             printHelp();
             return;
         }
-        DIMACSStatisticsBuilder sb = new DIMACSStatisticsBuilder(new DIMACSReader(fileName));
-        sb.finalizy();
-        sb.print();
+        
+        List<String> files = getFilenames("from");
+        for (int i = 0; i < files.size(); i++) {
+            DIMACSStatisticsBuilder sb = new DIMACSStatisticsBuilder(new DIMACSReader(files.get(i)));
+            sb.finalizy();
+            sb.print2("RND3SAT", "RND3SAT.txt");
+        }
+
     }
     
     private static void printHelp() {
@@ -48,5 +56,18 @@ public class CnfStats {
         System.out.println("Example: java CnfStat hole7.cnf");
         System.out.println("The parameter 'cnf_file_name' is a file in DIMACS format containing a CNF SAT problem.");
         System.out.println("One can find CNF files here: https://www.cs.ubc.ca/~hoos/SATLIB/benchm.html .");	
+    }
+    
+    public static List<String> getFilenames(String folderPath){
+        List<String> filenames = new ArrayList<>();
+        File[] listOfFiles = new File(folderPath).listFiles();
+
+        for (File file : listOfFiles){
+            if (file.isFile()){
+                filenames.add(file.getName());
+            }
+        }
+        
+        return filenames;
     }
 }

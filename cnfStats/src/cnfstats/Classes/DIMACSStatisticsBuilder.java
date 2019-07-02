@@ -5,7 +5,14 @@
  */
 package cnfstats.Classes;
 
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -132,6 +139,7 @@ public class DIMACSStatisticsBuilder {
 		System.out.println("numberOfStraitClauses: " + numberOfStraitClauses);
 		System.out.println("numberOfPositiveLiterals: " + numberOfPositiveLiterals);
 		System.out.println("numberOfNegativeLiterals: " + numberOfNegativeLiterals);
+                
 		System.out.println("ratioOfClausesAndVariables: " + ratioOfClausesAndVariables);
 		for(int i=0; i<ratioOfKClauses.length; i++) {
 			System.out.println("ratioOfKClauses["+i+"]: " + ratioOfKClauses[i]);
@@ -142,10 +150,66 @@ public class DIMACSStatisticsBuilder {
 		System.out.println("ratioOfStraitClauses: " + ratioOfStraitClauses);
 		System.out.println("ratioOfPositiveLiterals: " + ratioOfPositiveLiterals);
 		System.out.println("ratioOfNegativeLiterals: " + ratioOfNegativeLiterals);
+                
 		System.out.println("mayBePigeonHole: " + mayBePigeonHole);
 		System.out.println("mayBeRandom3SAT: " + mayBeRandom3SAT);
 		System.out.println("mayBeRandomAIM: " + mayBeRandomAIM);
 		System.out.println("mayBeNemesisFormula: " + mayBeNemesisFormula);
 		System.out.println("mayBeDubois: " + mayBeDubois);
+	}
+        
+        public void print2(String problemType, String toFile)
+        {
+            
+            try(
+                FileWriter fw = new FileWriter(toFile, true);
+                BufferedWriter bw = new BufferedWriter(fw);
+                PrintWriter out = new PrintWriter(bw)){
+
+                    out.print(numberOfVariables + ";");
+                    out.print(numberOfClauses + ";");
+                    
+                    for(int i=0; i<numberOfKClauses.length; i++) 
+                            out.print(numberOfKClauses[i] + ";");
+                    
+                    out.print(numberOfBlackClauses + ";");
+                    out.print(numberOfWhiteClauses + ";");
+                    out.print(numberOfDefiniteHornClauses + ";");
+                    out.print(numberOfStraitClauses + ";");
+                    out.print(numberOfPositiveLiterals + ";");
+                    out.print(numberOfNegativeLiterals + ";");
+                    
+                    out.print(ratioOfClausesAndVariables + ";");
+                    for(int i=0; i<ratioOfKClauses.length; i++) 
+                            out.print(ratioOfKClauses[i] + ";");
+                            
+                    out.print(ratioOfBlackClauses + ";");
+                    out.print(ratioOfWhiteClauses + ";");
+                    out.print(ratioOfDefiniteHornClauses + ";");
+                    out.print(ratioOfStraitClauses + ";");
+                    out.print(ratioOfPositiveLiterals + ";");
+                    out.print(ratioOfNegativeLiterals + ";");
+                    
+                    if(mayBePigeonHole) out.print("1.0;");
+                    else out.print("0.0;");
+
+                    if(mayBeRandom3SAT) out.print("1.0;");
+                    else out.print("0.0;");
+
+                    if(mayBeRandomAIM) out.print("1.0;");
+                    else out.print("0.0;");
+
+                    if(mayBeNemesisFormula) out.print("1.0;");
+                    else out.print("0.0;");
+
+                    if(mayBeDubois) out.print("1.0:");
+                    else out.print("0.0:");
+
+                    out.println(problemType);
+                
+                    out.close();
+                    
+                } catch (IOException e) {}
+
 	}
 }
