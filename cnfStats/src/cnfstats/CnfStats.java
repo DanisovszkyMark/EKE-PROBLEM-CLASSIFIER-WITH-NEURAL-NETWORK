@@ -42,13 +42,15 @@ public class CnfStats {
             return;
         }
         
-        List<String> files = getFilenames("from");
+        List<String> files = getFilenames("D:\\Projektmunkák\\EKE-PROBLEM-CLASSIFIER-WITH-NEURAL-NETWORK\\cnfStats\\files\\DIMACS\\SSA\\kicsomagolva_8");
         for (int i = 0; i < files.size(); i++) {
             DIMACSStatisticsBuilder sb = new DIMACSStatisticsBuilder(new DIMACSReader(files.get(i)));
             sb.finalizy();
-            sb.print2("RND3SAT", "RND3SAT.txt");
+            sb.print2("SSA", "SSA_8.txt");
+            if(i % 10 == 0) System.out.println(i + "/" + files.size() );
         }
-
+        System.out.println(files.size() + "/" + files.size() );
+        System.out.println("Kész!");
     }
     
     private static void printHelp() {
