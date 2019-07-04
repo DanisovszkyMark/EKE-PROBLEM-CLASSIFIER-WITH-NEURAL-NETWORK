@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SolverSeged"
         mc:Ignorable="d"
-        Title="MainWindow" Height="311.881" Width="461.386">
+        Title="Problem classifier" Height="380" Width="520">
     <DockPanel Background="{DynamicResource DarkBackgroundBrush}">
         <StackPanel x:Name="spTop" DockPanel.Dock="Top" Height="25" Background="{DynamicResource LightBackgroundBrush}">
             <Menu>

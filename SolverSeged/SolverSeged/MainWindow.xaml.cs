@@ -75,7 +75,10 @@ namespace SolverSeged
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "Text files (*.txt)|*.txt";
             if (openFileDialog.ShowDialog() == true)
+            {
                 fileName = openFileDialog.FileName;
+                this.tb_path.Text = openFileDialog.SafeFileName;
+            }
 
             //Eredmények meghatározása
             float hatar = 0.8f;

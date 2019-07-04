@@ -30,3 +30,19 @@ C:\Users\dmark\Desktop\Meló\Kutató csoport\NeuralNetwork_SAT\SolverSeged\Solve
 C:\Users\dmark\Desktop\Meló\Kutató csoport\NeuralNetwork_SAT\SolverSeged\SolverSeged\obj\Debug\SolverSeged.csproj.CoreCompileInputs.cache
 C:\Users\dmark\Desktop\Meló\Kutató csoport\NeuralNetwork_SAT\SolverSeged\SolverSeged\obj\Debug\SolverSeged.exe
 C:\Users\dmark\Desktop\Meló\Kutató csoport\NeuralNetwork_SAT\SolverSeged\SolverSeged\obj\Debug\SolverSeged.pdb
+D:\Projektmunkák\EKE-PROBLEM-CLASSIFIER-WITH-NEURAL-NETWORK\SolverSeged\SolverSeged\bin\Debug\SolverSeged.exe.config
+D:\Projektmunkák\EKE-PROBLEM-CLASSIFIER-WITH-NEURAL-NETWORK\SolverSeged\SolverSeged\bin\Debug\SolverSeged.exe
+D:\Projektmunkák\EKE-PROBLEM-CLASSIFIER-WITH-NEURAL-NETWORK\SolverSeged\SolverSeged\bin\Debug\SolverSeged.pdb
+D:\Projektmunkák\EKE-PROBLEM-CLASSIFIER-WITH-NEURAL-NETWORK\SolverSeged\SolverSeged\obj\Debug\SolverSeged.csprojAssemblyReference.cache
+D:\Projektmunkák\EKE-PROBLEM-CLASSIFIER-WITH-NEURAL-NETWORK\SolverSeged\SolverSeged\obj\Debug\MainWindow.g.cs
+D:\Projektmunkák\EKE-PROBLEM-CLASSIFIER-WITH-NEURAL-NETWORK\SolverSeged\SolverSeged\obj\Debug\App.g.cs
+D:\Projektmunkák\EKE-PROBLEM-CLASSIFIER-WITH-NEURAL-NETWORK\SolverSeged\SolverSeged\obj\Debug\SolverSeged_MarkupCompile.cache
+D:\Projektmunkák\EKE-PROBLEM-CLASSIFIER-WITH-NEURAL-NETWORK\SolverSeged\SolverSeged\obj\Debug\SolverSeged_MarkupCompile.lref
+D:\Projektmunkák\EKE-PROBLEM-CLASSIFIER-WITH-NEURAL-NETWORK\SolverSeged\SolverSeged\obj\Debug\App.baml
+D:\Projektmunkák\EKE-PROBLEM-CLASSIFIER-WITH-NEURAL-NETWORK\SolverSeged\SolverSeged\obj\Debug\MainWindow.baml
+D:\Projektmunkák\EKE-PROBLEM-CLASSIFIER-WITH-NEURAL-NETWORK\SolverSeged\SolverSeged\obj\Debug\SolverSeged.g.resources
+D:\Projektmunkák\EKE-PROBLEM-CLASSIFIER-WITH-NEURAL-NETWORK\SolverSeged\SolverSeged\obj\Debug\SolverSeged.Properties.Resources.resources
+D:\Projektmunkák\EKE-PROBLEM-CLASSIFIER-WITH-NEURAL-NETWORK\SolverSeged\SolverSeged\obj\Debug\SolverSeged.csproj.GenerateResource.cache
+D:\Projektmunkák\EKE-PROBLEM-CLASSIFIER-WITH-NEURAL-NETWORK\SolverSeged\SolverSeged\obj\Debug\SolverSeged.csproj.CoreCompileInputs.cache
+D:\Projektmunkák\EKE-PROBLEM-CLASSIFIER-WITH-NEURAL-NETWORK\SolverSeged\SolverSeged\obj\Debug\SolverSeged.exe
+D:\Projektmunkák\EKE-PROBLEM-CLASSIFIER-WITH-NEURAL-NETWORK\SolverSeged\SolverSeged\obj\Debug\SolverSeged.pdb
