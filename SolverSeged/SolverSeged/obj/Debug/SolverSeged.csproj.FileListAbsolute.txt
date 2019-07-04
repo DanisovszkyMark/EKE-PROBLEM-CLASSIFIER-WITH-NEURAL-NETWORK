@@ -1,0 +1,32 @@
+C:\Users\dmark\Desktop\SolverSeged\SolverSeged\bin\Debug\SolverSeged.exe.config
+C:\Users\dmark\Desktop\SolverSeged\SolverSeged\bin\Debug\SolverSeged.exe
+C:\Users\dmark\Desktop\SolverSeged\SolverSeged\bin\Debug\SolverSeged.pdb
+C:\Users\dmark\Desktop\SolverSeged\SolverSeged\obj\Debug\SolverSeged.csprojAssemblyReference.cache
+C:\Users\dmark\Desktop\SolverSeged\SolverSeged\obj\Debug\MainWindow.g.cs
+C:\Users\dmark\Desktop\SolverSeged\SolverSeged\obj\Debug\App.g.cs
+C:\Users\dmark\Desktop\SolverSeged\SolverSeged\obj\Debug\SolverSeged_MarkupCompile.cache
+C:\Users\dmark\Desktop\SolverSeged\SolverSeged\obj\Debug\SolverSeged_MarkupCompile.lref
+C:\Users\dmark\Desktop\SolverSeged\SolverSeged\obj\Debug\App.baml
+C:\Users\dmark\Desktop\SolverSeged\SolverSeged\obj\Debug\MainWindow.baml
+C:\Users\dmark\Desktop\SolverSeged\SolverSeged\obj\Debug\SolverSeged.g.resources
+C:\Users\dmark\Desktop\SolverSeged\SolverSeged\obj\Debug\SolverSeged.Properties.Resources.resources
+C:\Users\dmark\Desktop\SolverSeged\SolverSeged\obj\Debug\SolverSeged.csproj.GenerateResource.cache
+C:\Users\dmark\Desktop\SolverSeged\SolverSeged\obj\Debug\SolverSeged.csproj.CoreCompileInputs.cache
+C:\Users\dmark\Desktop\SolverSeged\SolverSeged\obj\Debug\SolverSeged.exe
+C:\Users\dmark\Desktop\SolverSeged\SolverSeged\obj\Debug\SolverSeged.pdb
+C:\Users\dmark\Desktop\Meló\Kutató csoport\NeuralNetwork_SAT\SolverSeged\SolverSeged\bin\Debug\SolverSeged.exe.config
+C:\Users\dmark\Desktop\Meló\Kutató csoport\NeuralNetwork_SAT\SolverSeged\SolverSeged\bin\Debug\SolverSeged.exe
+C:\Users\dmark\Desktop\Meló\Kutató csoport\NeuralNetwork_SAT\SolverSeged\SolverSeged\bin\Debug\SolverSeged.pdb
+C:\Users\dmark\Desktop\Meló\Kutató csoport\NeuralNetwork_SAT\SolverSeged\SolverSeged\obj\Debug\SolverSeged.csprojAssemblyReference.cache
+C:\Users\dmark\Desktop\Meló\Kutató csoport\NeuralNetwork_SAT\SolverSeged\SolverSeged\obj\Debug\MainWindow.g.cs
+C:\Users\dmark\Desktop\Meló\Kutató csoport\NeuralNetwork_SAT\SolverSeged\SolverSeged\obj\Debug\App.g.cs
+C:\Users\dmark\Desktop\Meló\Kutató csoport\NeuralNetwork_SAT\SolverSeged\SolverSeged\obj\Debug\SolverSeged_MarkupCompile.cache
+C:\Users\dmark\Desktop\Meló\Kutató csoport\NeuralNetwork_SAT\SolverSeged\SolverSeged\obj\Debug\SolverSeged_MarkupCompile.lref
+C:\Users\dmark\Desktop\Meló\Kutató csoport\NeuralNetwork_SAT\SolverSeged\SolverSeged\obj\Debug\App.baml
+C:\Users\dmark\Desktop\Meló\Kutató csoport\NeuralNetwork_SAT\SolverSeged\SolverSeged\obj\Debug\MainWindow.baml
+C:\Users\dmark\Desktop\Meló\Kutató csoport\NeuralNetwork_SAT\SolverSeged\SolverSeged\obj\Debug\SolverSeged.g.resources
+C:\Users\dmark\Desktop\Meló\Kutató csoport\NeuralNetwork_SAT\SolverSeged\SolverSeged\obj\Debug\SolverSeged.Properties.Resources.resources
+C:\Users\dmark\Desktop\Meló\Kutató csoport\NeuralNetwork_SAT\SolverSeged\SolverSeged\obj\Debug\SolverSeged.csproj.GenerateResource.cache
+C:\Users\dmark\Desktop\Meló\Kutató csoport\NeuralNetwork_SAT\SolverSeged\SolverSeged\obj\Debug\SolverSeged.csproj.CoreCompileInputs.cache
+C:\Users\dmark\Desktop\Meló\Kutató csoport\NeuralNetwork_SAT\SolverSeged\SolverSeged\obj\Debug\SolverSeged.exe
+C:\Users\dmark\Desktop\Meló\Kutató csoport\NeuralNetwork_SAT\SolverSeged\SolverSeged\obj\Debug\SolverSeged.pdb

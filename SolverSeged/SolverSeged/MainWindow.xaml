@@ -1,0 +1,73 @@
+﻿<Window x:Class="SolverSeged.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SolverSeged"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="311.881" Width="461.386">
+    <DockPanel Background="{DynamicResource DarkBackgroundBrush}">
+        <StackPanel x:Name="spTop" DockPanel.Dock="Top" Height="25" Background="{DynamicResource LightBackgroundBrush}">
+            <Menu>
+                <Menu.Foreground>
+                    <SolidColorBrush Color="{DynamicResource LightForegroundColor}"/>
+                </Menu.Foreground>
+                <Menu.Background>
+                    <SolidColorBrush Color="{DynamicResource LightBackgroundColor}"/>
+                </Menu.Background>
+                <MenuItem Header="File"/>
+                <MenuItem Header="View"/>
+                <MenuItem Header="Settings" Foreground="White">
+                    <MenuItem x:Name="menu_setNetwork" Header="Set network" Background="{DynamicResource LightBackgroundBrush}" Click="menu_setNetwork_Click" Foreground="White" ></MenuItem>
+                </MenuItem>
+                <MenuItem Header="Help"/>
+            </Menu>
+        </StackPanel>
+
+        <StackPanel x:Name="spBottom" DockPanel.Dock="Bottom" Height="25" Orientation="Horizontal" Background="{DynamicResource LightBackgroundBrush}">
+            <Label Content="Processing: ">
+                <Label.Foreground>
+                    <SolidColorBrush Color="{DynamicResource LightForegroundColor}"/>
+                </Label.Foreground>
+            </Label>
+            <StatusBar x:Name="sbProcessing" Width="100" Height="15"/>
+        </StackPanel>
+
+        <StackPanel x:Name="spMiddle" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Background="{DynamicResource DarkBackgroundBrush}" >
+            <Button x:Name="btn_browse" Content="Browse" Margin="0,0,20,0" Height="30" Width="80"  Click="btn_browse_Click"/>
+            <TextBox x:Name="tb_path" Text="Path..." Height="30" Margin="0,0,20,0" Width="200" IsEnabled="False"/>
+
+            <StackPanel Orientation="Horizontal">
+                <StackPanel x:Name="sp_labels" Orientation="Vertical">
+                    <Label x:Name="lbl_AIS" Content="AIS" Foreground="Gray"/>
+                    <Label x:Name="lbl_BEJING" Content="BEJING" Foreground="Gray"/>
+                    <Label x:Name="lbl_BLOCKWORLDS" Content="BW" Foreground="Gray"/>
+                    <Label x:Name="lbl_BMC" Content="BMC" Foreground="Gray"/>
+                    <Label x:Name="lbl_BMS" Content="BMS" Foreground="Gray"/>
+                    <Label x:Name="lbl_CBS" Content="CBS" Foreground="Gray"/>
+                    <Label x:Name="lbl_GCP" Content="GCP" Foreground="Gray"/>
+                    <Label x:Name="lbl_LOGISTICS" Content="LOGISTICS" Foreground="Gray"/>
+                    <Label x:Name="lbl_QG" Content="QG" Foreground="Gray"/>
+                    <Label x:Name="lbl_RND3SAT" Content="RND3SAT" Foreground="Gray"/>
+
+                </StackPanel>
+                <StackPanel x:Name="sp_labels2" Orientation="Vertical">
+                    <Label x:Name="lbl_SWGCP" Content="SWGCP" Foreground="Gray"/>
+                    <Label x:Name="lbl_AIM" Content="AIM" Foreground="Gray"/>
+                    <Label x:Name="lbl_BF" Content="BF" Foreground="Gray"/>
+                    <Label x:Name="lbl_DUBOIS" Content="DUBOIS" Foreground="Gray"/>
+                    <Label x:Name="lbl_HANOI" Content="HANOI" Foreground="Gray"/>
+                    <Label x:Name="lbl_II" Content="II" Foreground="Gray"/>
+                    <Label x:Name="lbl_JNH" Content="JNH" Foreground="Gray"/>
+                    <Label x:Name="lbl_LRAN" Content="LRAN" Foreground="Gray"/>
+                    <Label x:Name="lbl_PARITY" Content="PARITY" Foreground="Gray"/>
+                    <Label x:Name="lbl_PHOLE" Content="PHOLE" Foreground="Gray"/>
+                    <Label x:Name="lbl_SSA" Content="SSA" Foreground="Gray"/>
+
+                </StackPanel>
+
+            </StackPanel>
+        </StackPanel>
+
+    </DockPanel>
+</Window>
