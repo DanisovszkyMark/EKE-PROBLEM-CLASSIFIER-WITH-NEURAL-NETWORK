@@ -14,6 +14,8 @@ Például: 48 ; 0 ; ... ; 78 ; 0,21 ; 0,5 ; ... ; 0,735 ; 0.0 ; 1.0 ; ... ; 0.0 
 
 **Osztályozó program bemutatása**
 
+![Demo](https://github.com/DanisovszkyMark/EKE-PROBLEM-CLASSIFIER-WITH-NEURAL-NETWORK/blob/master/SolverSeged/Screenshots/SoftwareGif.gif)
+
 Van lehetőségünk már betanított hálózatot beolvasni .txt állományból:
 
 <p align="center">
