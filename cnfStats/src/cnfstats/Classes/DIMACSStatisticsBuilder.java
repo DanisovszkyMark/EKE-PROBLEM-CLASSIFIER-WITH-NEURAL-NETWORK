@@ -158,58 +158,73 @@ public class DIMACSStatisticsBuilder {
 		System.out.println("mayBeDubois: " + mayBeDubois);
 	}
         
-        public void print2(String problemType, String toFile)
+        /**
+         * Előállítja a probléma statisztikája alapján a neurális háló által elfogadott bemenetet
+         * @param problemType A probléma típusa
+         * @param toFile A cél file neve
+         */
+        public void printToFile(String problemType, String toFile)
         {
-            
             try(
                 FileWriter fw = new FileWriter(toFile, true);
                 BufferedWriter bw = new BufferedWriter(fw);
                 PrintWriter out = new PrintWriter(bw)){
-
-                    out.print(numberOfVariables + ";");
-                    out.print(numberOfClauses + ";");
-                    
-                    for(int i=0; i<numberOfKClauses.length; i++) 
-                            out.print(numberOfKClauses[i] + ";");
-                    
-                    out.print(numberOfBlackClauses + ";");
-                    out.print(numberOfWhiteClauses + ";");
-                    out.print(numberOfDefiniteHornClauses + ";");
-                    out.print(numberOfStraitClauses + ";");
-                    out.print(numberOfPositiveLiterals + ";");
-                    out.print(numberOfNegativeLiterals + ";");
-                    
-                    out.print(ratioOfClausesAndVariables + ";");
-                    for(int i=0; i<ratioOfKClauses.length; i++) 
-                            out.print(ratioOfKClauses[i] + ";");
-                            
-                    out.print(ratioOfBlackClauses + ";");
-                    out.print(ratioOfWhiteClauses + ";");
-                    out.print(ratioOfDefiniteHornClauses + ";");
-                    out.print(ratioOfStraitClauses + ";");
-                    out.print(ratioOfPositiveLiterals + ";");
-                    out.print(ratioOfNegativeLiterals + ";");
-                    
-                    if(mayBePigeonHole) out.print("1.0;");
-                    else out.print("0.0;");
-
-                    if(mayBeRandom3SAT) out.print("1.0;");
-                    else out.print("0.0;");
-
-                    if(mayBeRandomAIM) out.print("1.0;");
-                    else out.print("0.0;");
-
-                    if(mayBeNemesisFormula) out.print("1.0;");
-                    else out.print("0.0;");
-
-                    if(mayBeDubois) out.print("1.0:");
-                    else out.print("0.0:");
-
-                    out.println(problemType);
                 
-                    out.close();
+                StringBuilder builder = new StringBuilder();
+                builder.append(numberOfVariables).append(";");
+                builder.append(numberOfClauses).append(";");
                     
-                } catch (IOException e) {}
+                for(int i=0; i<numberOfKClauses.length; i++) {
+                    builder.append(numberOfKClauses[i]).append(";");
+                }
+                    
+                builder.append(numberOfBlackClauses).append(";");
+                builder.append(numberOfWhiteClauses).append(";");
+                builder.append(numberOfDefiniteHornClauses).append(";");
+                builder.append(numberOfStraitClauses).append(";");
+                builder.append(numberOfPositiveLiterals).append(";");
+                builder.append(numberOfNegativeLiterals).append(";");
+                builder.append(ratioOfClausesAndVariables).append(";");
+                
+                for(int i=0; i<ratioOfKClauses.length; i++) {
+                    builder.append(ratioOfKClauses[i]).append(";");
+                }
+                      
+                builder.append(ratioOfBlackClauses).append(";");
+                builder.append(ratioOfWhiteClauses).append(";");
+                builder.append(ratioOfDefiniteHornClauses).append(";");
+                builder.append(ratioOfStraitClauses).append(";");
+                builder.append(ratioOfPositiveLiterals).append(";");
+                builder.append(ratioOfNegativeLiterals).append(";");
+
+                if(mayBePigeonHole) builder.append("1.0").append(";");
+                else builder.append("0.0").append(";");
+
+                if(mayBeRandom3SAT) builder.append("1.0").append(";");
+                else builder.append("0.0").append(";");
+
+                if(mayBeRandomAIM) builder.append("1.0").append(";");
+                else builder.append("0.0").append(";");
+
+                if(mayBeNemesisFormula) builder.append("1.0").append(";");
+                else builder.append("0.0").append(";");
+
+                if(mayBeDubois) builder.append("1.0").append(":");
+                else builder.append("0.0").append(":");
+
+                String[] classesString = new String[] { "AIS", "BEJING", "BLOCKWORLDS", "BMC", "BMS", "CBS", "GCP", "LOGISTICS", "QG", "RND3SAT", "SWGCP", "AIM", "BF", "DUBOIS", "HANOI", "II", "JNH", "LRAN", "PARITY", "PHOLE", "SSA" };
+                for (int i = 0; i < classesString.length; i++) {
+                    if(problemType != classesString[i]) builder.append("0");
+                    else builder.append("1");
+                    
+                    if(i < classesString.length-1) builder.append(";");
+                }
+                                
+                out.println(builder.toString().replace('.', ','));
+
+                out.close();
+                }
+            catch (IOException e) {}
 
 	}
 }
