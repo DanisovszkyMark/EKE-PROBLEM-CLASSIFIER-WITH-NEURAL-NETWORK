@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -22,17 +23,12 @@ namespace SolverSeged
     /// </summary>
     public partial class MainWindow : Window
     {
-        //Feladatok:
-        //Adatbeolvasás a hálóra tekintve jó legyen
-
-        //Másik program: Tanítsa be a neurális hálót, tegye lementhetővé
-
-        //Opciók: A határ legyen csúszka?
-        
         private NeuralNetwork nn;
+        private List<double[]> learningInputs;
+        private List<double[]> learningOutputs;
 
-        private SolidColorBrush b_white = new SolidColorBrush(Colors.White);
-        private SolidColorBrush b_gray = new SolidColorBrush(Colors.Gray);
+        private SolidColorBrush b_white;
+        private SolidColorBrush b_gray;
 
         private List<Label> labels;
 
@@ -62,6 +58,9 @@ namespace SolverSeged
             labels.Add(this.lbl_PARITY);
             labels.Add(this.lbl_PHOLE);
             labels.Add(this.lbl_SSA);
+
+            b_white = new SolidColorBrush(Colors.White);
+            b_gray = new SolidColorBrush(Colors.Gray);
         }
 
         /// <summary>
@@ -70,36 +69,77 @@ namespace SolverSeged
         /// </summary>
         private void btn_browse_Click(object sender, RoutedEventArgs e)
         {
-            //File kiválasztása
-            string fileName = ""; //ahol van a feldolgozandó file
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "Text files (*.txt)|*.txt";
             if (openFileDialog.ShowDialog() == true)
             {
-                fileName = openFileDialog.FileName;
                 this.tb_path.Text = openFileDialog.SafeFileName;
+                ShowResults(openFileDialog.FileName);
             }
+            else
+            {
+                MessageBox.Show("Ismeretlen hiba!");
+            }
+        }
 
-            //Eredmények meghatározása
-            float hatar = 0.8f;
+        private void ShowResults(string fileName)
+        {
+            float limit = 0.8f; //hardcode.
             double[] input = InputByTxt(fileName);
 
             if (input != null && input.Length == 48)
             {
-                double[] eredmenyek = nn.FeedForward(input);
+                double[] results = nn.FeedForward(input);
+                int maxi = 0;
 
-                //Felület frissítése az eredmények alapján
-                for (int i = 0; i < eredmenyek.Length; i++)
+                for (int i = 0; i < results.Length; i++)
                 {
-                    if (eredmenyek[i] >= hatar) labels[i].Foreground = b_white;
+                    if (results[i] >= limit) labels[i].Foreground = b_white;
                     else labels[i].Foreground = b_gray;
+
+                    if (results[i] > results[maxi]) maxi = i;
                 }
+
+                MessageBox.Show(labels[maxi].Content.ToString());
             }
             else
             {
                 MessageBox.Show("Hibás a file felépítése");
             }
+        }
 
+        private double[] InputByTxt(string fileName)
+        {
+            StreamReader sr;
+
+            try
+            {
+                sr = new StreamReader(fileName);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ismeretlen hiba");
+                return null;
+            }
+
+            double[] temp = new double[48];
+
+            string[] lineSplit = sr.ReadLine().Split(':')[0].Split(';');
+            for (int i = 0; i < lineSplit.Length; i++)
+            {
+                try
+                {
+                    temp[i] = Convert.ToDouble(lineSplit[i]);
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Hibás filefelépítés!");
+                    return null;
+                }
+            }
+
+            sr.Close();
+            return temp;
         }
 
         private void CreateNetworkByTxt(string fileName)
@@ -120,37 +160,10 @@ namespace SolverSeged
                 return;
             }
 
-            //első sor alapján a háló létrehozása
-            string[] atm = sr.ReadLine().Split(':'); //0-> Rétegek | 1 -> Acti
+            string[] atm = sr.ReadLine().Split(':'); //0-> Layers | 1 -> Activation Function
 
-            ActivationStrategy acti;
-            try
-            {
-                if (atm[atm.Length-1] == "Sigmoid") acti = new Sigmoid();
-                else if (atm[atm.Length - 1] == "TanH") acti = new TanH();
-                else if (atm[atm.Length - 1] == "ReLU") acti = new ReLU();
-                else if (atm[atm.Length - 1] == "LReLU") acti = new LReLU();
-                else
-                {
-                    MessageBox.Show("Nem támogatott aktivációs függvény!");
-                    return;
-                }
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Hibás filefelépítés");
-                return;
-            }
+            nn = new NeuralNetwork(getLayersBuild(atm), getActi(atm));
 
-            int[] layers = new int[atm.Length-1];
-            for (int i = 0; i < atm.Length-1; i++)
-            {
-                layers[i] = Convert.ToInt32(atm[i]);
-            }
-
-            nn = new NeuralNetwork(layers, acti);
-
-            //Minden réteg adatainak beolvasása
             List<MLPLayer> atmLayers = new List<MLPLayer>();
             while (!sr.EndOfStream)
             {
@@ -161,7 +174,7 @@ namespace SolverSeged
                 MLPLayer atmLayer = new MLPLayer();
                 atmLayer.NumberOfInput = atmNumberOfInputs;
                 atmLayer.NumberOfOutput = atmNumberOfOutputs;
-                atmLayer.ActivationStrategy = acti;
+                atmLayer.ActivationStrategy = nn.Activation;
 
                 double[] atmOutputs = new double[atmNumberOfOutputs];
                 atm = sr.ReadLine().Split(':');
@@ -170,7 +183,7 @@ namespace SolverSeged
                     atmOutputs[i] = Convert.ToDouble(atm[i].ToString());
                 }
                 atmLayer.Output = atmOutputs;
-                
+
 
                 double[] atmInputs = new double[atmNumberOfInputs];
                 atm = sr.ReadLine().Split(':');
@@ -222,72 +235,146 @@ namespace SolverSeged
 
                 atmLayers.Add(atmLayer);
             }
-            
+
             nn.Layers = atmLayers.ToArray();
 
-            //vége
-            if (sr != null)
-            {
-                sr.Close();
-                MessageBox.Show("Sikeres");
-                MessageBox.Show(nn.Activation.ToString());
-            }
+
+            sr.Close();
+            //MessageBox.Show("Sikeres");
+            //MessageBox.Show(nn.Activation.ToString());
         }
 
-        private double[] InputByTxt(string fileName)
+        private int[] getLayersBuild(string[] line)
         {
-            StreamReader sr;
+            int[] layers = new int[line.Length - 1];
+            for (int i = 0; i < line.Length - 1; i++)
+            {
+                layers[i] = Convert.ToInt32(line[i]);
+            }
 
+            return layers;
+        }
+
+        private ActivationStrategy getActi(string[] line)
+        {
+            ActivationStrategy acti;
             try
             {
-                sr = new StreamReader(fileName);
-            }
-            catch (FileNotFoundException)
-            {
-                MessageBox.Show("Nincs ilyen file!");
-                return null;
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Ismeretlen hiba");
-                return null;
-            }
-
-            double[] temp = new double[48];
-
-            try
-            {
-                string[] lineSplit = sr.ReadLine().Split(':')[0].Split(';');
-                for (int i = 0; i < lineSplit.Length; i++)
+                if (line[line.Length - 1] == "Sigmoid") acti = new Sigmoid();
+                else if (line[line.Length - 1] == "TanH") acti = new TanH();
+                else if (line[line.Length - 1] == "ReLU") acti = new ReLU();
+                else if (line[line.Length - 1] == "LReLU") acti = new LReLU();
+                else
                 {
-                    temp[i] = Convert.ToDouble(lineSplit[i]);
+                    MessageBox.Show("Nem támogatott aktivációs függvény!");
+                    return null;
                 }
             }
             catch (Exception)
             {
-                MessageBox.Show("Hibás filefelépítés!");
+                MessageBox.Show("Hibás filefelépítés");
                 return null;
             }
 
-            sr.Close();
-            return temp;
+            return acti;
         }
 
         private void menu_setNetwork_Click(object sender, RoutedEventArgs e)
         {
-            //Mehetne a progressbarba
+            nn = null;
 
-            //File kiválasztása
-            string fileName = ""; //ahol van a neurális háló
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "Text files (*.txt)|*.txt";
             if (openFileDialog.ShowDialog() == true)
-                fileName = openFileDialog.FileName;
-
-            //File alapján a háló létrehozása
-            CreateNetworkByTxt(fileName);
+                CreateNetworkByTxt(openFileDialog.FileName);
 
             if (nn != null) MessageBox.Show("Háló sikeresen betöltve!");
         }
+
+        private void menu_teachNetwork_Click(object sender, RoutedEventArgs e)
+        {
+            LoadLearningDatas();
+
+            BackgroundWorker worker = new BackgroundWorker();
+            worker.RunWorkerCompleted += Worker_RunWorkerCompleted;
+            worker.WorkerReportsProgress = true;
+            worker.DoWork += Worker_DoWork; ;
+            worker.ProgressChanged += Worker_ProgressChanged;
+            worker.RunWorkerAsync();
+        }
+
+        private void Worker_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            this.pbProcessing.Value = e.ProgressPercentage;
+        }
+
+        private void Worker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            BackgroundWorker worker = sender as BackgroundWorker;
+            worker.ReportProgress(0, "Tanulás ...");
+
+            for (int i = 0; i < 10000; i++)
+            {
+                if (i % 2 == 0)
+                {
+                    //NetworkProcessing.SaveNetToFile(net, net.acti + i + ".txt");
+
+                }
+                worker.ReportProgress(i / 100, "%");
+                //NetworkProcessing.Learning(net, "NNInput.txt");
+            }
+        }
+
+        private void Worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            this.pbProcessing.Value = 0;
+        }
+
+        /// <summary>
+        /// Betölti a tanuláshoz szükséges adatokat, be illetve kimenetet
+        /// </summary>
+        private void LoadLearningDatas()
+        {
+            learningInputs = new List<double[]>();
+            learningOutputs = new List<double[]>();
+
+            StreamReader sr = null;
+
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Text files (*.txt)|*.txt";
+            if (openFileDialog.ShowDialog() == true)
+                sr = new StreamReader(openFileDialog.FileName);
+
+            if (sr != null)
+            {
+                while (!sr.EndOfStream)
+                {
+                    string[] atm = sr.ReadLine().Split(':');
+                    double[] atmInput = new double[atm[0].Split(';').Length];
+                    double[] atmOutput = new double[atm[1].Split(';').Length];
+
+                    string[] atmInputLine = atm[0].Split(';');
+                    for (int i = 0; i < atmInput.Length; i++)
+                    {
+                        atmInput[i] = Convert.ToDouble(atmInputLine[i]);
+                    }
+
+                    string[] atmOutputLine = atm[1].Split(';');
+                    for (int i = 0; i < atmOutput.Length; i++)
+                    {
+                        atmOutput[i] = Convert.ToDouble(atmOutputLine[i]);
+                    }
+
+                    learningInputs.Add(atmInput);
+                    learningOutputs.Add(atmOutput);
+                }
+                sr.Close();
+            }
+            else
+            {
+                MessageBox.Show("Ismeretlen hiba!");
+            }
+        }
+
     }
 }

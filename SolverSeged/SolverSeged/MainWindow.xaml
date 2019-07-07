@@ -18,7 +18,8 @@
                 <MenuItem Header="File"/>
                 <MenuItem Header="View"/>
                 <MenuItem Header="Settings" Foreground="White">
-                    <MenuItem x:Name="menu_setNetwork" Header="Set network" Background="{DynamicResource LightBackgroundBrush}" Click="menu_setNetwork_Click" Foreground="White" ></MenuItem>
+                    <MenuItem x:Name="menu_setNetwork" Header="Set network" Background="{DynamicResource LightBackgroundBrush}" Click="menu_setNetwork_Click" Foreground="White" />
+                    <MenuItem x:Name="menu_teachNetwork" Header="Teach network" Background="{DynamicResource LightBackgroundBrush}" Click="menu_teachNetwork_Click" Foreground="White" />
                 </MenuItem>
                 <MenuItem Header="Help"/>
             </Menu>
@@ -30,7 +31,7 @@
                     <SolidColorBrush Color="{DynamicResource LightForegroundColor}"/>
                 </Label.Foreground>
             </Label>
-            <StatusBar x:Name="sbProcessing" Width="100" Height="15"/>
+            <ProgressBar x:Name="pbProcessing" Width="100" Height="15"/>
         </StackPanel>
 
         <StackPanel x:Name="spMiddle" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Background="{DynamicResource DarkBackgroundBrush}" >
