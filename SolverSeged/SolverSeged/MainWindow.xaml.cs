@@ -205,33 +205,33 @@ namespace SolverSeged
                 }
                 atmLayer.Weights = atmWeights;
 
-                double[,] atmWeightsDelta = new double[atmNumberOfOutputs, atmNumberOfInputs];
+                //double[,] atmWeightsDelta = new double[atmNumberOfOutputs, atmNumberOfInputs];
 
-                for (int i = 0; i < atmNumberOfOutputs; i++)
-                {
-                    atm = sr.ReadLine().Split(':');
-                    for (int k = 0; k < atmNumberOfInputs; k++)
-                    {
-                        atmWeightsDelta[i, k] = Convert.ToDouble(atm[k].ToString());
-                    }
-                }
-                atmLayer.WeightsDelta = atmWeightsDelta;
+                //for (int i = 0; i < atmNumberOfOutputs; i++)
+                //{
+                //    atm = sr.ReadLine().Split(':');
+                //    for (int k = 0; k < atmNumberOfInputs; k++)
+                //    {
+                //        atmWeightsDelta[i, k] = Convert.ToDouble(atm[k].ToString());
+                //    }
+                //}
+                //atmLayer.WeightsDelta = atmWeightsDelta;
 
-                double[] atmgamma = new double[atmNumberOfOutputs];
-                atm = sr.ReadLine().Split(':');
-                for (int i = 0; i < atmOutputs.Length; i++)
-                {
-                    atmgamma[i] = Convert.ToDouble(atm[i].ToString());
-                }
-                atmLayer.Gamma = atmgamma;
+                //double[] atmgamma = new double[atmNumberOfOutputs];
+                //atm = sr.ReadLine().Split(':');
+                //for (int i = 0; i < atmOutputs.Length; i++)
+                //{
+                //    atmgamma[i] = Convert.ToDouble(atm[i].ToString());
+                //}
+                //atmLayer.Gamma = atmgamma;
 
-                double[] atmerror = new double[atmNumberOfOutputs];
-                atm = sr.ReadLine().Split(':');
-                for (int i = 0; i < atmOutputs.Length; i++)
-                {
-                    atmerror[i] = Convert.ToDouble(atm[i].ToString());
-                }
-                atmLayer.Error = atmerror;
+                //double[] atmerror = new double[atmNumberOfOutputs];
+                //atm = sr.ReadLine().Split(':');
+                //for (int i = 0; i < atmOutputs.Length; i++)
+                //{
+                //    atmerror[i] = Convert.ToDouble(atm[i].ToString());
+                //}
+                //atmLayer.Error = atmerror;
 
                 atmLayers.Add(atmLayer);
             }
