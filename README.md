@@ -46,3 +46,10 @@ A háló teljesítménye és a feladat típusa alapján a program besorolja a fe
 
 A cél az, hogy amennyiben ezekben a környezetekben jól működik a program úgy az egészet át kell emelni néhány java metódusra.
 Ez azt jelenti, hogy java nyelven kell implementálni a neurális hálózat osztályt és biztosítani kell azt, hogy egy .txt állományból egy betanított hálózatot be lehessen olvasni vele. Ezután egy olyan függvényt kell létrehozni, mely paraméterben egy probléma statisztikáját kapja és visszaadja a vélhetően helyes probléma típusát.
+
+Mivel az előzően definiált környezeteken belül egész jól teljesít a hálózat, így elkészült a neurális hálózat java verziója is. Ez a verzió a tanulásra nem képes (nincs rá szüksége) de az adatfeldolgozásra igen. Kell tehát előre egy betanított hálózat a használatához. 
+A java-s verzió UML ábrája:
+
+<p align="center">
+<img src="ProblemClassifier/UML.png">
+</p>
