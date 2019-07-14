@@ -212,7 +212,7 @@ public class DIMACSStatisticsBuilder {
                 if(mayBeDubois) builder.append("1.0").append(":");
                 else builder.append("0.0").append(":");
 
-                String[] classesString = new String[] { "AIS", "BEJING", "BLOCKWORLDS", "BMC", "BMS", "CBS", "GCP", "LOGISTICS", "QG", "RND3SAT", "SWGCP", "AIM", "BF", "DUBOIS", "HANOI", "II", "JNH", "LRAN", "PARITY", "PHOLE", "SSA" };
+                String[] classesString = new String[] { "AIS", "BEJING", "BLOCKWORLDS", "BMC", "BMS", "CBS", "GCP", "LOGISTICS", "QG", "RND3SAT", "SWGCP", "AIM", "BF", "DUBOIS", "HANOI", "II", "JNH", "LRAN", "PARITY", "PHOLE", "SSA", "WND" };
                 for (int i = 0; i < classesString.length; i++) {
                     if(problemType != classesString[i]) builder.append("0");
                     else builder.append("1");
