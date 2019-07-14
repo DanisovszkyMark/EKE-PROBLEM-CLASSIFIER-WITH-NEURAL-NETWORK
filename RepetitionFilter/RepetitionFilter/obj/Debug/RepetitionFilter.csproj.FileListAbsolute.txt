@@ -1,0 +1,7 @@
+D:\Projektmunkák\EKE-PROBLEM-CLASSIFIER-WITH-NEURAL-NETWORK\RepetitionFilter\RepetitionFilter\bin\Debug\RepetitionFilter.exe.config
+D:\Projektmunkák\EKE-PROBLEM-CLASSIFIER-WITH-NEURAL-NETWORK\RepetitionFilter\RepetitionFilter\bin\Debug\RepetitionFilter.exe
+D:\Projektmunkák\EKE-PROBLEM-CLASSIFIER-WITH-NEURAL-NETWORK\RepetitionFilter\RepetitionFilter\bin\Debug\RepetitionFilter.pdb
+D:\Projektmunkák\EKE-PROBLEM-CLASSIFIER-WITH-NEURAL-NETWORK\RepetitionFilter\RepetitionFilter\obj\Debug\RepetitionFilter.csprojAssemblyReference.cache
+D:\Projektmunkák\EKE-PROBLEM-CLASSIFIER-WITH-NEURAL-NETWORK\RepetitionFilter\RepetitionFilter\obj\Debug\RepetitionFilter.csproj.CoreCompileInputs.cache
+D:\Projektmunkák\EKE-PROBLEM-CLASSIFIER-WITH-NEURAL-NETWORK\RepetitionFilter\RepetitionFilter\obj\Debug\RepetitionFilter.exe
+D:\Projektmunkák\EKE-PROBLEM-CLASSIFIER-WITH-NEURAL-NETWORK\RepetitionFilter\RepetitionFilter\obj\Debug\RepetitionFilter.pdb
